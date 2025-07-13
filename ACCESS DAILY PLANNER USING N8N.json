@@ -1,0 +1,136 @@
+{
+  "name": "ACCESS DAILY PLANNER USING N8N",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\nMy name is KAR. How can I assist you today?",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e101c8d6-8224-4f77-b9fc-0702389b202f",
+      "name": "When chat message received",
+      "webhookId": "454c9c37-3a59-4eb3-952a-556a3dcd33c3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "16fcb82f-ba91-49ab-bbfe-ee03136342f1",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        180,
+        240
+      ],
+      "id": "1c6a0f00-48a2-40ff-bc4a-a936f0074422",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "Bv0JiapW1GMmPjAc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/18-6HHEeq5icIAtj6LaC3nVH_Fv-30TIKY_qPKqrVl0Q/edit?usp=sharing",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 685612780,
+          "mode": "list",
+          "cachedResultName": "SHEET.xlsx - Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/18-6HHEeq5icIAtj6LaC3nVH_Fv-30TIKY_qPKqrVl0Q/edit#gid=685612780"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        360,
+        220
+      ],
+      "id": "3bc733a1-bb8e-410a-ab9f-4d68a9768a56",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "QwPZHUUs6XNlUDC7",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e64697b3-42e6-4a3a-a947-471aff7616e2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d382b4a8bf086b553f1bb8fefea5d47d7ead9d416b473c8410878f27f956989e"
+  },
+  "id": "De0jtdMtrKnAveAo",
+  "tags": []
+}
