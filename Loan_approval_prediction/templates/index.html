@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Loan Approval Prediction</h1>
+    <form method="POST" action="/predict">
+        <label>Gender (0: Female, 1: Male):</label>
+        <input type="number" name="Gender" required>
+
+        <label>Married (0: No, 1: Yes):</label>
+        <input type="number" name="Married" required>
+
+        <label>Dependents (0, 1, 2, or 3):</label>
+        <input type="number" name="Dependents" required>
+
+        <label>Education (0: Not Graduate, 1: Graduate):</label>
+        <input type="number" name="Education" required>
+
+        <label>Self Employed (0: No, 1: Yes):</label>
+        <input type="number" name="Self_Employed" required>
+
+        <label>Applicant Income:</label>
+        <input type="number" step="any" name="ApplicantIncome" required>
+
+        <label>Coapplicant Income:</label>
+        <input type="number" step="any" name="CoapplicantIncome" required>
+
+        <label>Loan Amount:</label>
+        <input type="number" step="any" name="LoanAmount" required>
+
+        <label>Loan Amount Term:</label>
+        <input type="number" step="any" name="Loan_Amount_Term" required>
+
+        <label>Credit History (0: Bad, 1: Good):</label>
+        <input type="number" step="any" name="Credit_History" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
