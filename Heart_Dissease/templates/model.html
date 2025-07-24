@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ model_name }} Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        pre { background-color: #f8f8f8; padding: 20px; border: 1px solid #ccc; }
+        a { margin-top: 20px; display: block; }
+    </style>
+</head>
+<body>
+    <h1>{{ model_name }} Report</h1>
+    <h2>Accuracy: {{ accuracy }}</h2>
+    <pre>{{ report }}</pre>
+    <a href="/results">Back to Results</a>
+</body>
+</html>
