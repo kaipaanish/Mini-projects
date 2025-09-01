@@ -1,0 +1,10 @@
+opencv-python
+numpy
+moviepy
+Pillow
+tqdm
+scikit-image
+jinja2
+reportlab
+ultralytics
+pyyaml
